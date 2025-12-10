@@ -21,12 +21,10 @@ export default function CalendarPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="p-4 border rounded-lg">
-             <Calendar
-                mode="single"
-                className="p-0"
-             />
-          </div>
+          <Calendar
+            mode="single"
+            className="w-full rounded-md border"
+          />
         </CardContent>
        </Card>
     </div>

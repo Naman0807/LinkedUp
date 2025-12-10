@@ -38,7 +38,7 @@ export default function SidebarWrapper({
     <>
       <Sidebar collapsible="icon" className="border-r">
         <SidebarHeader>
-          <Logo size="sm" iconOnly={isCollapsed} />
+          <Logo size="sm" iconOnly={true} />
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>

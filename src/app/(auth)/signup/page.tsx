@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, setPersistence, browserLocalPersistence } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 
 
@@ -57,7 +57,6 @@ export default function SignupPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      await setPersistence(auth, browserLocalPersistence);
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       const user = userCredential.user;
 
@@ -91,7 +90,6 @@ export default function SignupPage() {
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
     try {
-      await setPersistence(auth, browserLocalPersistence);
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
@@ -117,7 +115,7 @@ export default function SignupPage() {
         description: "Welcome! You're signed in with Google.",
       });
       router.push("/dashboard");
-    } catch (error: any)_ {
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Google Sign-In Failed",
@@ -194,7 +192,7 @@ export default function SignupPage() {
                   {isLoading ? "Creating Account..." : "Sign Up"}
                 </Button>
               </form>
-            </F_orm>
+            </Form>
           </div>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}

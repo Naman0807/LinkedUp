@@ -54,12 +54,16 @@ export default function DashboardLayout({
     }
   }, [user, loading, router]);
 
-  if (loading || !user) {
+  if (loading) {
      return (
         <div className="flex items-center justify-center h-screen">
           <Bot className="h-12 w-12 animate-pulse text-primary" />
         </div>
       );
+  }
+
+  if (!user) {
+    return null;
   }
 
   return (
@@ -107,7 +111,7 @@ export default function DashboardLayout({
       </Sidebar>
       <SidebarInset>
         <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6 sticky top-0 z-40">
-          <SidebarTrigger className="md:hidden" />
+          <SidebarTrigger />
           <div className="w-full flex-1">
             {/* Can add search or other header items here */}
           </div>

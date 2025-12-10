@@ -10,8 +10,7 @@ service cloud.firestore {
 
     // Allow users to read and write their own profile
     match /users/{userId} {
-      allow read, create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && request.auth.uid == userId;
+      allow read, create, update: if request.auth != null && request.auth.uid == userId;
     }
   }
 }

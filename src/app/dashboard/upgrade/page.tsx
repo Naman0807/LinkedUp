@@ -76,7 +76,7 @@ export default function UpgradePage() {
                     </ul>
                 </CardContent>
                  <CardFooter>
-                     <Button asChild className="w-full" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+                     <Button asChild className="w-full" variant="secondary">
                         {/* This would link to a Razorpay checkout page */}
                         <Link href="#">
                             Upgrade to Premium

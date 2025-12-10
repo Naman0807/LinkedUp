@@ -118,7 +118,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
-              <Button asChild size="lg" className="w-full" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+              <Button asChild size="lg" className="w-full" variant="secondary">
                 <Link href="/signup">
                   Sign Up Now
                 </Link>

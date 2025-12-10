@@ -81,9 +81,23 @@ export default function DashboardPage() {
               freePostsRemaining,
               plan: plan,
             });
+          } else {
+             // New user who hasn't generated any posts yet
+            setStats({
+                postsGenerated: 0,
+                postsScheduled: 0,
+                freePostsRemaining: FREE_PLAN_POST_LIMIT,
+                plan: 'free',
+            });
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
+           setStats({
+                postsGenerated: 0,
+                postsScheduled: 0,
+                freePostsRemaining: FREE_PLAN_POST_LIMIT,
+                plan: 'free',
+            });
         } finally {
           setIsLoading(false);
         }
@@ -121,6 +135,7 @@ export default function DashboardPage() {
             </>
         ) : (
             statCards.map((stat) => (
+            (stat.title === "Free Posts Remaining" && stats.plan !== 'free') ? null :
             <Card key={stat.title} className={stat.highlight ? "border-primary" : ""}>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>

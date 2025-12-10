@@ -38,6 +38,8 @@ const formSchema = z.object({
   password: z.string().min(6, { message: "Password must be at least 6 characters." }),
 });
 
+const googleProvider = new GoogleAuthProvider();
+
 export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
@@ -90,8 +92,7 @@ export default function SignupPage() {
     setGoogleLoading(true);
     try {
       await setPersistence(auth, browserLocalPersistence);
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
        // Check if user document already exists
@@ -116,7 +117,7 @@ export default function SignupPage() {
         description: "Welcome! You're signed in with Google.",
       });
       router.push("/dashboard");
-    } catch (error: any) {
+    } catch (error: any)_ {
       toast({
         variant: "destructive",
         title: "Google Sign-In Failed",
@@ -193,7 +194,7 @@ export default function SignupPage() {
                   {isLoading ? "Creating Account..." : "Sign Up"}
                 </Button>
               </form>
-            </Form>
+            </F_orm>
           </div>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
